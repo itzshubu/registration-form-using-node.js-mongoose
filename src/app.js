@@ -1,5 +1,5 @@
 const express = require('express')
-const Todooo = require("./models/register.js")                                           
+const Todooo = require("./models/registration-model.js")                                           
 
 const app = express()
 const port = 3009
@@ -9,8 +9,8 @@ app.use(express.static("public"))
 app.set('view engine', 'ejs');
 
 // app.use(express.json());
-
-
+// The line app.use(express.json()); in an Express application is used to parse incoming requests with JSON payloads. This middleware function is necessary for processing data sent in the body of an HTTP request in JSON format. When you include this middleware, Express automatically parses the JSON data and makes it available on the req.body object of your route handlers.
+// there is no need of this line
 
 app.use(express.urlencoded({extended:false}));
 // this used to get the form data automaticaly throw the name attribute ex:: req.body.email , req.body.pasword etc.
@@ -28,8 +28,8 @@ app.get('/register', (req, res) => {
 })
 
 app.post('/register', async(req, res) => {
-
   try{
+    console.log(req.body)
      let a = req.body.password;
      console.log(a)
      let b = req.body.password2;
